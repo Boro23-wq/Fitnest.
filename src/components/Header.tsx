@@ -40,7 +40,7 @@ export const Header = () => {
                                             </span>
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <img
-                                                className="h-8 w-8 rounded-full"
+                                                className="h-10 w-10 rounded-full"
                                                 src={
                                                     session?.user
                                                         ?.image as string
@@ -99,7 +99,7 @@ export const Header = () => {
                         ) : (
                             <button
                                 onClick={() => signIn()}
-                                className="border border-zinc-800 bg-black dark:bg-black text-gray-50 hover:bg-zinc-900 dark:hover:border-zinc-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-zinc-900 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2 mr-2 focus:outline-none transition ease-in-out delay-50">
+                                className="border border-zinc-800 bg-black dark:bg-black text-gray-50 hover:bg-zinc-900 dark:hover:border-zinc-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-zinc-900 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2 focus:outline-none transition ease-in-out delay-50">
                                 Sign in
                             </button>
                         )}

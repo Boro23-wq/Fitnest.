@@ -26,11 +26,19 @@ const Home: NextPage = ({ allUsers }: any) => {
 
     return (
         <>
-            <PageSeo
-                title={`Fitnest by - ${siteMetadata.author}`}
-                description={siteMetadata.description}
-                url={siteMetadata.siteUrl}
-            />
+            {session ? (
+                <PageSeo
+                    title={`Home - ${session?.user?.name}`}
+                    description={session?.user?.email}
+                    url={session?.user?.image}
+                />
+            ) : (
+                <PageSeo
+                    title={`${siteMetadata.title}`}
+                    description={siteMetadata.description}
+                    url={siteMetadata.siteUrl}
+                />
+            )}
             <Layout>
                 <div className="flex items-center justify-center flex-col dark:bg-black">
                     {status === 'loading' && <Spinner />}

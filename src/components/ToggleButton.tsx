@@ -8,7 +8,7 @@ export const ToggleButton = () => {
         <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="w-10 h-10 p-2 border rounded-lg bg-black dark:border-zinc-800 dark:hover:border-zinc-600 transition ease-in-out delay-50"
+            className="mx-2 w-10 h-10 p-2 border rounded-lg bg-black dark:border-zinc-800 dark:hover:border-zinc-600 transition ease-in-out delay-50"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
