@@ -1,8 +1,9 @@
-import { Header } from '@/components/Header';
 import { NextComponentType } from 'next';
-import { SessionProvider, signIn, signOut } from 'next-auth/react';
+import { ThemeProvider } from 'next-themes';
+import { SessionProvider } from 'next-auth/react';
 
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 
 import '../styles/globals.css';
 
@@ -17,10 +18,19 @@ function MyApp({
 }: CustomAppProps) {
     return (
         <>
-            <SessionProvider session={session} refetchInterval={0}>
-                <Header />
-                <Component {...pageProps} />
-            </SessionProvider>
+            <ThemeProvider attribute="class">
+                <SessionProvider session={session} refetchInterval={0}>
+                    <Head>
+                        <title>Fitnest</title>
+                        <meta
+                            name="Fitnest application"
+                            content="Everything fitness all in one place."
+                        />
+                        <link rel="icon" href="/favicon.ico" />
+                    </Head>
+                    <Component {...pageProps} />
+                </SessionProvider>
+            </ThemeProvider>
         </>
     );
 }

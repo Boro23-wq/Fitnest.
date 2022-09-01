@@ -2,13 +2,13 @@ import { signIn } from 'next-auth/react';
 
 export const Hero = () => {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-black">
             <div className="px-4 mx-auto flex flex-col items-center justify-center h-screen max-w-screen-xl text-center">
                 <a
                     href="#"
-                    className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100  rounded-full dark:bg-black border dark:border-zinc-800 dark:text-white hover:bg-gray-200 dark:hover:border-zinc-500 transition ease-in-out delay-50"
                     role="alert">
-                    <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">
+                    <span className="text-xs bg-primary-600 dark:bg-zinc-900 rounded-full text-white px-4 py-1.5 mr-3">
                         Free
                     </span>{' '}
                     <span className="text-sm font-medium">
@@ -26,11 +26,9 @@ export const Hero = () => {
                     </svg>
                 </a>
                 <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                    We make{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-br from-gray-800 to-violet-800">
-                        fitnest
-                    </span>{' '}
-                    entirely free
+                    We make fitnest entirely free
+                    {/* <span className="text-transparent bg-clip-text bg-gradient-to-br from-gray-800 to-violet-800"> */}
+                    {/* </span>{' '} */}
                 </h1>
                 <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
                     Here at Fitnest we focus on doing something active every
@@ -39,7 +37,7 @@ export const Hero = () => {
                 </p>
                 <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                     <button
-                        className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
+                        className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 transition ease-in-out delay-50"
                         type="button"
                         onClick={() => signIn()}>
                         <svg
