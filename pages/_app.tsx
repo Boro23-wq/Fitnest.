@@ -1,6 +1,8 @@
 import { NextComponentType } from 'next';
+import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
+import { SEO } from '@/components/SEO';
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -28,6 +30,7 @@ function MyApp({
                         />
                         <link rel="icon" href="/favicon.ico" />
                     </Head>
+                    <DefaultSeo {...SEO} />
                     <Component {...pageProps} />
                 </SessionProvider>
             </ThemeProvider>

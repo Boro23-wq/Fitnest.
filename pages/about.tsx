@@ -1,5 +1,6 @@
 import { Layout } from '@/components/Layout';
 import { ProfileCard } from '@/components/ProfileCard';
+import { PageSeo } from '@/components/SEO';
 import { Spinner } from '@/components/Spinner';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -16,9 +17,16 @@ export default function AboutPage() {
     });
 
     return (
-        <Layout>
-            {status === 'loading' && <Spinner />}
-            <ProfileCard session={session} />
-        </Layout>
+        <>
+            <PageSeo
+                title={`About - ${session?.user?.name}`}
+                description={session?.user?.email}
+                url={session?.user?.image}
+            />
+            <Layout>
+                {status === 'loading' && <Spinner />}
+                <ProfileCard session={session} />
+            </Layout>
+        </>
     );
 }
