@@ -1,22 +1,23 @@
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
-import { Header } from '../src/components/Header';
-import { Hero } from '../src/components/Hero';
-import { ProfileCard } from '../src/components/ProfileCard';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { ProfileCard } from '@/components/ProfileCard';
 import { saveUser, userExist } from './api/user/utils';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = ({ allUsers }: any) => {
     const { data: session } = useSession();
 
-    const loggedInUser = {
-        name: session?.user?.name,
-        email: session?.user?.email,
-        image: session?.user?.image,
-    };
-
     useEffect(() => {
+        const loggedInUser = {
+            name: session?.user?.name,
+            email: session?.user?.email,
+            image: session?.user?.image,
+        };
+
         if (session && !userExist(loggedInUser)) {
             saveUser(loggedInUser);
         }
@@ -33,11 +34,8 @@ const Home: NextPage = ({ allUsers }: any) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Header */}
-            <Header />
-
-            <div className="mx-12 my-4">
-                {session ? <ProfileCard /> : <Hero />}
+            <div className="flex items-center justify-center flex-col ">
+                {!session && <Hero />}
             </div>
         </>
     );

@@ -1,5 +1,6 @@
+import { Header } from '@/components/Header';
 import { NextComponentType } from 'next';
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider, signIn, signOut } from 'next-auth/react';
 
 import type { AppProps } from 'next/app';
 
@@ -15,9 +16,12 @@ function MyApp({
     pageProps: { session, ...pageProps },
 }: CustomAppProps) {
     return (
-        <SessionProvider session={session}>
-            <Component {...pageProps} />
-        </SessionProvider>
+        <>
+            <SessionProvider session={session} refetchInterval={0}>
+                <Header />
+                <Component {...pageProps} />
+            </SessionProvider>
+        </>
     );
 }
 
