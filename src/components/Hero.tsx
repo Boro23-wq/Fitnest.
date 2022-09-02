@@ -1,12 +1,14 @@
 import { signIn } from 'next-auth/react';
+import { FitnestIcon } from './FitnestIcon';
 
 export const Hero = () => {
     return (
         <section className="bg-white dark:bg-black">
-            <div className="px-4 mx-auto flex flex-col items-center justify-center h-screen max-w-screen-xl text-center">
+            <div className="mx-auto flex flex-col items-center justify-center h-screen max-w-screen-xl text-center">
+                <FitnestIcon w={75} h={75} />
                 <a
                     href="#"
-                    className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100  rounded-full dark:bg-black border dark:border-zinc-800 dark:text-white hover:bg-gray-200 dark:hover:border-zinc-500 transition ease-in-out delay-50"
+                    className="inline-flex justify-between items-center py-1 px-1 pr-4 mt-10 mb-6 text-sm text-gray-700 bg-gray-100  rounded-full dark:bg-black border dark:border-zinc-800 dark:text-white hover:bg-gray-200 dark:hover:border-zinc-500 transition ease-in-out delay-50"
                     role="alert">
                     <span className="text-xs bg-primary-600 dark:bg-zinc-900 rounded-full text-white px-4 py-1.5 mr-3">
                         Free
