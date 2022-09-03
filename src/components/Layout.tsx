@@ -1,18 +1,22 @@
+import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout = ({ children }) => {
     return (
-        <>
-            <Header />
-            <section className="bg-white dark:bg-black">
-                <div className="grid max-w-screen-xl px-4 lg:px-0 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                    <div className="mr-auto place-self-center lg:col-span-7">
-                        <main className="dark:bg-black h-screen">
-                            {children}
-                        </main>
+        <div className="flex flex-col h-screen justify-between">
+            <div className="flex flex-col">
+                <Header />
+                <section className="bg-white dark:bg-black ">
+                    <div className="grid max-w-screen-xl px-4 sm:px-4 lg:px-4 py-8 mx-auto lg:gap-0 xl:gap-0 lg:py-8 lg:grid-cols-1">
+                        {/* <div className="mr-auto place-self-center sm:col-span-8"> */}
+                        {children}
+                        {/* </div> */}
                     </div>
-                </div>
-            </section>
-        </>
+                </section>
+            </div>
+            <div className="flex flex-col">
+                <Footer />
+            </div>
+        </div>
     );
 };

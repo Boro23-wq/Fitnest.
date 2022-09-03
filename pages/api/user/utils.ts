@@ -1,5 +1,5 @@
-export const userExist = async (loggedInUser) => {
-    const response = await fetch(`/api/user?email=${loggedInUser.email}`, {
+export const userExist = async (email) => {
+    const response = await fetch(`/api/user?email=${email}`, {
         method: 'GET',
         headers: {
             Accept: 'application.json',
@@ -25,7 +25,7 @@ export const saveUser = async (loggedInUser) => {
     });
 
     if (!response.ok) {
-        throw new Error(response.statusText);
+        return;
     }
 
     return await response.json();

@@ -6,13 +6,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { ToggleButton } from './ToggleButton';
 
-const navigation = [
-    { name: 'Exercises', href: '/exercises', current: true },
-    // { name: 'Team', href: '#', current: false },
-    // { name: 'Projects', href: '#', current: false },
-    // { name: 'Calendar', href: '#', current: false },
-];
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
@@ -21,17 +14,28 @@ export const Header = () => {
     const { data: session } = useSession();
     const router = useRouter();
 
+    const navigation = [
+        {
+            name: 'Exercises',
+            href: '/exercises',
+            current: router.asPath.split('/')[1] === 'exercises',
+        },
+        // { name: 'Team', href: '#', current: false },
+        // { name: 'Projects', href: '#', current: false },
+        // { name: 'Calendar', href: '#', current: false },
+    ];
+
     return (
         <Disclosure
             as="nav"
-            className="bg-gray-50 border-gray-200 px-4 lg:px-0 py-2.5 dark:bg-black border-b dark:border-gray-900">
+            className="bg-zinc-50 border-zinc-200 lg:px-0 py-2 dark:bg-black border-b dark:border-zinc-900">
             {({ open }) => (
                 <>
-                    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-4">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-4 lg:px-4">
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="absolute right-0 flex items-center sm:hidden">
                                 {/* Mobile menu button*/}
-                                <Disclosure.Button className="items-center justify-center rounded-md p-2 bg-black text-white dark:text-white border border-black dark:border-zinc-900 hover:dark:border-zinc-600 hover:bg-zinc-800 transition ease-in-out delay-50">
+                                <Disclosure.Button className="items-center justify-center rounded-md p-2 bg-black text-white dark:text-white border border-black dark:border-zinc-800 hover:dark:border-zinc-600 hover:bg-zinc-800 transition ease-in-out delay-50">
                                     <span className="sr-only">
                                         Open main menu
                                     </span>
@@ -62,9 +66,11 @@ export const Header = () => {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <button
                                                 key={item.name}
-                                                href={item.href}
+                                                onClick={() =>
+                                                    router.push(item.href)
+                                                }
                                                 className={classNames(
                                                     item.current
                                                         ? 'bg-black text-white border border-black dark:border-zinc-800 dark:hover:border-zinc-600 hover:bg-zinc-800 dark:hover:bg-black'
@@ -77,7 +83,7 @@ export const Header = () => {
                                                         : undefined
                                                 }>
                                                 {item.name}
-                                            </a>
+                                            </button>
                                         ))}
                                     </div>
                                 </div>
@@ -124,9 +130,9 @@ export const Header = () => {
                                                                 }
                                                                 className={classNames(
                                                                     active
-                                                                        ? 'bg-gray-100 dark:bg-zinc-900'
+                                                                        ? 'bg-zinc-100 dark:bg-zinc-900'
                                                                         : '',
-                                                                    'block px-4 py-2 w-full text-left text-md text-gray-800 dark:text-white'
+                                                                    'block px-4 py-2 w-full text-left text-md text-zinc-800 dark:text-white'
                                                                 )}>
                                                                 Profile
                                                             </button>
