@@ -5,6 +5,7 @@ import { signOut, useSession, signIn } from 'next-auth/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { ToggleButton } from './ToggleButton';
+import { CustomButton } from './CustomButton';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -159,11 +160,11 @@ export const Header = () => {
                                         </Menu>
                                     </>
                                 ) : (
-                                    <button
-                                        onClick={() => signIn()}
-                                        className="border border-zinc-800 bg-black dark:bg-black text-gray-50 hover:bg-zinc-900 dark:hover:border-zinc-500 focus:ring-4 focus:ring-gray-200 dark:focus:ring-zinc-900 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2 focus:outline-none transition ease-in-out delay-50">
-                                        Sign in
-                                    </button>
+                                    <CustomButton
+                                        disabled={false}
+                                        handleClick={signIn}
+                                        buttonText={'Sign in'}
+                                    />
                                 )}
                                 <ToggleButton />
                             </div>

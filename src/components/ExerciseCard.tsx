@@ -3,8 +3,8 @@ import { capitalize } from '../utils';
 
 export const ExerciseCard = ({ exercises }) => {
     return (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mt-4">
-            {exercises?.map((exercise, index) => (
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mt-4 mb-4">
+            {exercises?.slice(0, 9).map((exercise, index) => (
                 <div
                     key={index}
                     className="relative block p-8 overflow-hidden border border-zinc-100 dark:border-zinc-800 rounded-lg mr-0 mt-4 sm:mr-6">

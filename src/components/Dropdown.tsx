@@ -8,18 +8,14 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export const Dropdown = ({
-    options,
-    type,
-    handleDropdownSelectedByTypeOrMuscle,
-}) => {
+export const Dropdown = ({ options, handleDropdownSelected }) => {
     return (
         <Menu
             as="div"
             className="relative inline-block text-left w-fit mt-4 mr-2">
             <div>
                 <Menu.Button className="inline-flex w-full justify-center rounded-md border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-black px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 shadow-sm hover:bg-zinc-100 dark:hover:border-zinc-600 focus:outline-none transition ease-in-out delay-50">
-                    Exercise by {type}
+                    Exercise Category
                     <ChevronDownIcon
                         className="-mr-1 ml-2 h-5 w-5"
                         aria-hidden="true"
@@ -42,9 +38,9 @@ export const Dropdown = ({
                                 {({ active }) => (
                                     <button
                                         onClick={() => {
-                                            handleDropdownSelectedByTypeOrMuscle(
-                                                { type, name: option.name }
-                                            );
+                                            handleDropdownSelected({
+                                                category: option.category,
+                                            });
                                         }}
                                         className={classNames(
                                             active
@@ -52,7 +48,7 @@ export const Dropdown = ({
                                                 : 'text-zinc-700',
                                             'block px-4 py-2 w-full text-left text-md text-gray-800 dark:text-white'
                                         )}>
-                                        {capitalize(option?.name)}
+                                        {capitalize(option?.category)}
                                     </button>
                                 )}
                             </Menu.Item>

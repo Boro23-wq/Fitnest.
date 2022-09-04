@@ -9,7 +9,7 @@ import { BodyIcon } from '@/components/Icons';
 import { useTheme } from 'next-themes';
 import { fetchExerciseByName } from './utils';
 
-export default function ExercisePage() {
+export default function ExercisePageByName() {
     const router = useRouter();
     const [exercise, setExercise] = useState<ExerciseType[]>();
     const { theme, setTheme } = useTheme();

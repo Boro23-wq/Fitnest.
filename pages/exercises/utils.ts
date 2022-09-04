@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-export const fetchExercises = async () => {
+export const fetchExercises = async (offset?) => {
     const res = await axios.get(
         'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
         {
             method: 'GET',
             url: 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
+            params: { offset },
             headers: {
                 'X-RapidAPI-Key': process.env
                     .NEXT_PUBLIC_RAPID_API_KEY as string,

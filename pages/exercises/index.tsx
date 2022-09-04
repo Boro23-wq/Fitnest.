@@ -13,12 +13,16 @@ import {
     fetchExerciseByType,
     fetchExercises,
 } from './utils';
-import { exerciseTypes, muscleTypes } from './categories';
+import { exerciseCategories, exerciseTypes, muscleTypes } from './categories';
+import { CustomButton } from '@/components/CustomButton';
+import { useRouter } from 'next/router';
 
 export default function ExercisesPage() {
     const [exercises, setExercises] = useState<ExerciseType[]>([]);
     const [loading, setLoading] = useState<Boolean>(false);
     const [name, setName] = useState('');
+    const router = useRouter();
+    const [offset, setOffset] = useState(0);
 
     const handleChange = (e) => {
         setName(e.target.value);
@@ -33,25 +37,39 @@ export default function ExercisesPage() {
         getExerciseByName();
     };
 
-    const handleDropdownSelectedByTypeOrMuscle = ({ type, name }) => {
-        if (type === 'Type') {
-            const getExerciseByType = async () => {
-                const data = await fetchExerciseByType(name);
-                setExercises(data);
-            };
-            getExerciseByType();
-            return;
+    const handleDropdownSelected = ({ category }) => {
+        router.push(`/exercises/category/${category}/`);
+    };
+
+    const handleNext = async () => {
+        setLoading(true);
+
+        const data = await fetchExercises(offset);
+        setExercises(data);
+
+        setOffset(offset + 9);
+
+        setLoading(false);
+    };
+
+    const handlePrev = async () => {
+        setLoading(true);
+
+        const data = await fetchExercises(offset);
+        setExercises(data);
+
+        setOffset(offset - 9);
+
+        if (offset === -9) {
+            setOffset(0);
         }
 
-        const getExerciseByMuscle = async () => {
-            const data = await fetchExerciseByMuscle(name);
-            setExercises(data);
-        };
-
-        getExerciseByMuscle();
+        setLoading(false);
     };
 
     useEffect(() => {
+        setOffset(0);
+
         const fetchAllExercise = async () => {
             setLoading(true);
 
@@ -94,23 +112,48 @@ export default function ExercisesPage() {
 
                 <div className="flex">
                     <Dropdown
-                        options={exerciseTypes}
-                        type={'Type'}
-                        handleDropdownSelectedByTypeOrMuscle={
-                            handleDropdownSelectedByTypeOrMuscle
-                        }
+                        options={exerciseCategories}
+                        handleDropdownSelected={handleDropdownSelected}
                     />
-                    <Dropdown
+                    {/* <Dropdown
                         options={muscleTypes}
                         type={'Muscle'}
                         handleDropdownSelectedByTypeOrMuscle={
                             handleDropdownSelectedByTypeOrMuscle
                         }
-                    />
+                    /> */}
                 </div>
                 {/* Search component and dropdown ends here */}
 
-                {loading ? <Spinner /> : <ExerciseCard exercises={exercises} />}
+                {loading ? (
+                    <Spinner />
+                ) : (
+                    <div>
+                        {exercises.length === 0 ? (
+                            <p className="mt-8 text-zinc-500 dark:text-zinc-400">
+                                No exercise found. Please try with a different
+                                name.
+                            </p>
+                        ) : (
+                            <ExerciseCard exercises={exercises} />
+                        )}
+
+                        {exercises.length > 0 && (
+                            <div className="flex justify-end mr-0 sm:mr-6">
+                                <CustomButton
+                                    handleClick={handlePrev}
+                                    buttonText="Previous &larr;"
+                                    disabled={offset === 0}
+                                />
+                                <CustomButton
+                                    disabled={offset === 1000}
+                                    handleClick={handleNext}
+                                    buttonText="Next &rarr;"
+                                />
+                            </div>
+                        )}
+                    </div>
+                )}
             </Layout>
         </>
     );

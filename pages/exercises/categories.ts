@@ -1,6 +1,11 @@
+export const exerciseCategories = [
+    { id: '1', category: 'type' },
+    { id: '2', category: 'muscle' },
+];
+
 export const exerciseTypes = [
     { id: '1', name: 'cardio' },
-    { id: '2', name: 'olympic_weightlifting' },
+    { id: '2', name: 'weightlifting' },
     { id: '3', name: 'plyometrics' },
     { id: '4', name: 'powerlifting' },
     { id: '5', name: 'strength' },
