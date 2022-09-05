@@ -126,7 +126,7 @@ export const Header = () => {
                                                             <button
                                                                 onClick={() =>
                                                                     router.push(
-                                                                        '/about'
+                                                                        '/profile'
                                                                     )
                                                                 }
                                                                 className={classNames(

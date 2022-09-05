@@ -8,7 +8,6 @@ import { Spinner } from '@/components/Spinner';
 import { PageSeo } from '@/components/SEO';
 
 import siteMetadata from '@/data/siteMetadata.json';
-import { HeroLayout } from '@/components/HeroLayout';
 import { HomeProfileCard } from '@/components/HomeProfileCard';
 
 const Home: NextPage = ({ allUsers }: any) => {
@@ -56,9 +55,9 @@ const Home: NextPage = ({ allUsers }: any) => {
             )}
 
             {status === 'unauthenticated' && !session && (
-                <HeroLayout>
+                <Layout>
                     <Hero />
-                </HeroLayout>
+                </Layout>
             )}
 
             {status === 'authenticated' && (

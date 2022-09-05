@@ -1,7 +1,38 @@
 import { signIn } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import { FitnestIcon } from './FitnestIcon';
+import { BicepsIcon, GlobeIcon, MoneyIcon, StretchingIcon } from './Icons';
+
+const features = [
+    {
+        name: 'Browse Exercises',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+        icon: GlobeIcon,
+    },
+    {
+        name: 'Target a muscle',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+        icon: BicepsIcon,
+    },
+    {
+        name: 'Access workout types',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+        icon: StretchingIcon,
+    },
+    {
+        name: 'No cost',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+        icon: MoneyIcon,
+    },
+];
 
 export const Hero = () => {
+    const { theme } = useTheme();
+
     return (
         <div className="mx-auto px-2 my-20 flex flex-col items-center justify-center max-w-screen-xl text-center">
             <FitnestIcon w={75} h={75} />
@@ -35,6 +66,7 @@ export const Hero = () => {
                 that makes you feel calm, unlock your long-term value and drive
                 your personal growth.
             </p>
+
             <div className="w-full sm:w-fit flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <button
                     className="justify-center inline-flex text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 transition ease-in-out delay-50"
@@ -55,6 +87,54 @@ export const Hero = () => {
                     </svg>
                     Sign in with Google
                 </button>
+            </div>
+
+            <div className="bg-white dark:bg-black pt-20 pb-12">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="lg:text-center">
+                        <h2 className="text-xs font-bold tracking-wider text-zinc-600 dark:text-zinc-400">
+                            FITNESS PERSONIFIED
+                        </h2>
+                        <p className="mt-2 text-3xl font-bold leading-8 tracking-tight dark:text-zinc-300 text-zinc-800 sm:text-4xl">
+                            A better way to workout
+                        </p>
+                        <p className="mt-4 max-w-2xl text-xl text-zinc-500 lg:mx-auto">
+                            Fitnest is accessible for everyone and entirely
+                            free. Right from your fingertips browse through
+                            1000+ exercises that would help you accomplish your
+                            fitness goals.
+                        </p>
+                    </div>
+
+                    <div className="mt-10">
+                        <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 md:space-y-0">
+                            {features.map((feature) => (
+                                <div key={feature.name} className="relative">
+                                    <dt>
+                                        <div className="absolute flex h-10 w-10 items-center justify-center rounded-md dark:bg-zinc-800 bg-zinc-100 text-black dark:text-white">
+                                            <feature.icon
+                                                fill={
+                                                    theme === 'dark'
+                                                        ? 'white'
+                                                        : 'black'
+                                                }
+                                                w={20}
+                                                h={20}
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <p className="ml-16 text-lg font-bold leading-6 dark:text-zinc-200 text-zinc-900">
+                                            {feature.name}
+                                        </p>
+                                    </dt>
+                                    <dd className="mt-2 ml-16 text-base dark:text-zinc-500 text-zinc-500">
+                                        {feature.description}
+                                    </dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     );

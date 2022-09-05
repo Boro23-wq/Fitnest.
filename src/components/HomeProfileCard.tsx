@@ -11,8 +11,9 @@ export const HomeProfileCard = ({ session }) => {
                     every week, and drive your personal growth.
                 </p>
             </div>
-            <div className="p-4 w-full max-w-sm bg-white rounded-lg border shadow-md sm:px-6 sm:py-4 dark:bg-black dark:border-zinc-900 border-gradient-to-r">
-                <div className="flex justify-between items-center mb-4">
+            <div className="relative p-4 w-full max-w-sm bg-white rounded-lg border border-b-0 shadow-md sm:px-6 sm:pt-4 sm:pb-8 dark:bg-black dark:border-zinc-900 border-gradient-to-r">
+                <div className="flex justify-between items-center mb-2">
+                    <span className="absolute inset-x-0 bottom-0 h-2 rounded-bl-md rounded-br-md bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></span>
                     <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
                         Profile
                     </h5>

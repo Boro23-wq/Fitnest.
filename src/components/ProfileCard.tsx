@@ -1,6 +1,6 @@
 export const ProfileCard = ({ session }) => {
     return (
-        <div className="flex flex-col items-center pb-10">
+        <div className="flex flex-col  pb-10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 className="mb-3 w-24 h-24 rounded-md shadow-lg"
