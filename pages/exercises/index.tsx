@@ -42,23 +42,23 @@ export default function ExercisesPage() {
     };
 
     const handleNext = async () => {
+        setOffset(offset + 9);
         setLoading(true);
 
-        const data = await fetchExercises(offset);
+        const data = await fetchExercises(offset + 9);
         setExercises(data);
 
-        setOffset(offset + 9);
-
         setLoading(false);
+
+        // console.log('From handleNext', exercises);
     };
 
     const handlePrev = async () => {
+        setOffset(offset - 9);
         setLoading(true);
 
-        const data = await fetchExercises(offset);
+        const data = await fetchExercises(offset - 9);
         setExercises(data);
-
-        setOffset(offset - 9);
 
         if (offset === -9) {
             setOffset(0);
@@ -68,12 +68,13 @@ export default function ExercisesPage() {
     };
 
     useEffect(() => {
+        // console.log('From useEffect', exercises);
         setOffset(0);
 
         const fetchAllExercise = async () => {
             setLoading(true);
 
-            const data = await fetchExercises();
+            const data = await fetchExercises(offset);
             setExercises(data);
 
             setLoading(false);
@@ -115,13 +116,6 @@ export default function ExercisesPage() {
                         options={exerciseCategories}
                         handleDropdownSelected={handleDropdownSelected}
                     />
-                    {/* <Dropdown
-                        options={muscleTypes}
-                        type={'Muscle'}
-                        handleDropdownSelectedByTypeOrMuscle={
-                            handleDropdownSelectedByTypeOrMuscle
-                        }
-                    /> */}
                 </div>
                 {/* Search component and dropdown ends here */}
 
@@ -142,7 +136,7 @@ export default function ExercisesPage() {
                             <div className="flex justify-end mr-0 sm:mr-6">
                                 <CustomButton
                                     handleClick={handlePrev}
-                                    buttonText="Previous &larr;"
+                                    buttonText="&larr; Previous"
                                     disabled={offset === 0}
                                 />
                                 <CustomButton

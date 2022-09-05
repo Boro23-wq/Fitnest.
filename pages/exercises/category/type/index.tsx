@@ -1,4 +1,4 @@
-import { ExerciseTypeCard } from '@/components/ExerciseTypeCard';
+import { ExerciseTypeAndMuscleCard } from '@/components/ExerciseTypeAndMuscleCard';
 import { Layout } from '@/components/Layout';
 import { useTheme } from 'next-themes';
 import { exerciseTypes } from 'pages/exercises/categories';
@@ -17,13 +17,13 @@ export default function ExercisePageByType() {
                     <span className="bg-green-100 text-green-800 text-sm font-semibold px-2.5 py-1 rounded dark:bg-green-200 dark:text-green-900">
                         25+
                     </span>{' '}
-                    exercises for each type of workout. Be it improving your
-                    cardio, or you just want to stretch your muscles, we have
-                    extensive list of exercises covered all in one place!
+                    exercises for every workout type. Be it improving your
+                    cardio, or stretching your muscles, we have an extensive
+                    list of exercises covered all in one place!
                 </p>
             </section>
 
-            <ExerciseTypeCard types={exerciseTypes} theme={theme} />
+            <ExerciseTypeAndMuscleCard types={exerciseTypes} theme={theme} />
         </Layout>
     );
 }

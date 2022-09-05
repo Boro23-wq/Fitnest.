@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export const fetchExercises = async (offset?) => {
+export const fetchExercises = async (offset) => {
+    console.log(offset);
     const res = await axios.get(
         'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
         {
@@ -38,13 +39,13 @@ export const fetchExerciseByName = async (name) => {
     return res.data;
 };
 
-export const fetchExerciseByType = async (type) => {
+export const fetchExerciseByType = async (type, offset?) => {
     const res = await axios.get(
         'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
         {
             method: 'GET',
             url: 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
-            params: { type },
+            params: { type, offset },
             headers: {
                 'X-RapidAPI-Key': process.env
                     .NEXT_PUBLIC_RAPID_API_KEY as string,
@@ -57,13 +58,13 @@ export const fetchExerciseByType = async (type) => {
     return res.data;
 };
 
-export const fetchExerciseByMuscle = async (muscle) => {
+export const fetchExerciseByMuscle = async (muscle, offset) => {
     const res = await axios.get(
         'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
         {
             method: 'GET',
             url: 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises',
-            params: { muscle },
+            params: { muscle, offset },
             headers: {
                 'X-RapidAPI-Key': process.env
                     .NEXT_PUBLIC_RAPID_API_KEY as string,
